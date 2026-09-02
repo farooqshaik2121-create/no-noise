@@ -1,0 +1,36 @@
+.tabsContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pill {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 4px;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+}
+
+.tab {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4a544e;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab:hover {
+  color: #121614;
+}
+
+.tab.active {
+  background-color: #121614;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}

@@ -1,67 +1,72 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import { CloudSun, Users, MapPin, Clock, HeartHandshake } from 'lucide-react';
+import { Sidebar } from '@/components/Sidebar';
+import { Header } from '@/components/Header';
+import { PillBadge } from '@/components/PillBadge';
+import { FeatureCard } from '@/components/FeatureCard';
+import { GatheringCard } from '@/components/GatheringCard';
+import { RightFeatureCard } from '@/components/RightFeatureCard';
+import { DiscoverySection } from '@/components/DiscoverySection';
+import { StatCard } from '@/components/StatCard';
+import styles from './page.module.css';
 
 export default function Home() {
+  const [activeNav, setActiveNav] = useState('home');
+
   return (
-    <div className={styles.page}>
+    <div className={styles.appShell}>
+      <Sidebar activeItem={activeNav} onSelectItem={setActiveNav} />
+
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+        <Header
+          pills={[
+            <PillBadge
+              key="weather"
+              icon={<CloudSun size={13} strokeWidth={2.4} />}
+              label="18° · Clear"
+            />,
+            <PillBadge
+              key="friends"
+              icon={<Users size={13} strokeWidth={2.4} />}
+              label="3 friends nearby"
+            />,
+          ]}
         />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+
+        <div className={styles.heroGrid}>
+          <div className={styles.heroLeft}>
+            <FeatureCard />
+            <GatheringCard />
+          </div>
+          <RightFeatureCard />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <DiscoverySection />
+
+        <div className={styles.statsRow}>
+          <StatCard
+            icon={<MapPin size={18} strokeWidth={2.2} />}
+            value="1,240"
+            label="Spots discovered this week"
+            accent="lime"
+            trend="+12%"
+          />
+          <StatCard
+            icon={<Clock size={18} strokeWidth={2.2} />}
+            value="86h"
+            label="Offline & quiet hours logged"
+            accent="sand"
+            trend="+8%"
+          />
+          <StatCard
+            icon={<HeartHandshake size={18} strokeWidth={2.2} />}
+            value="342"
+            label="Local connections made"
+            accent="navy"
+            trend="+24"
+          />
         </div>
       </main>
     </div>
