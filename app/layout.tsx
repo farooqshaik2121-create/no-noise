@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "No Noise — Quiet spots, real moments",
+  title: "No Noise — the quiet antidote to loud social media",
   description:
-    "No Noise is an atmospheric digital third place — real-life downtown moments, quiet local food discoveries, street culture, and low-key community interactions. No feed, no noise.",
+    "The quiet antidote to loud social media. An atmospheric digital third place — bakeries, late-night dining, quiet cafes, street architecture and urban walks. Ad-free, algorithm-free.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
